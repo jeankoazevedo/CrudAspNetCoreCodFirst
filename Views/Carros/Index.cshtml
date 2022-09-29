@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CrudAspNetCoreCodFirst.Models.Carro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Listagem de dados</h2>
+
+<a asp-action="NovoCarro" class="btn btn-primary">Novo Carro</a>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Marca
+                </th>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Ano
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ano)
+                    </td>
+                    <td>
+                        <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-info">Detalhes</a>
+                        <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                        <a asp-action="Excluir" asp-route-id="@item.Id" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
